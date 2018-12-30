@@ -16,9 +16,9 @@ package dataStructures.Fundaments;
  * the tail reference to point to the node that follows it (the implicit head of the list).
  */
 
-//TE FALTA DOUBLE LINKED LIST
 
-public class CircularlyLinkedList<E> {
+
+public class CircularlyLinkedList<E>{
 
 	//(nested node class identical to that of the SinglyLinkedList class)
 	
@@ -101,4 +101,5 @@ public class CircularlyLinkedList<E> {
 		}
 		return head.getElement();
 	}
+	
 }
