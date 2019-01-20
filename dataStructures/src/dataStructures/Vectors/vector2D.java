@@ -1,7 +1,8 @@
 package dataStructures.Vectors;
 
+import java.util.StringTokenizer;
 
-public class vector2D implements Vector{
+public class vector2D implements Vector, VectorFactory{
 	double x ,y;
 	public vector2D(double x, double y) {
 		this.x = x;
@@ -74,6 +75,44 @@ public class vector2D implements Vector{
 	@Override
 	public String toString() {
 		return "(" + this.x + ", " + this.y + ")";
+	}
+
+	@Override
+	public Vector newInstance(double[] coordinates) {
+		if(coordinates == null || coordinates.length != 2){
+			throw new IllegalArgumentException("this aint it");
+		}
+		return new vector2D(coordinates[0], coordinates[1]);
+	}
+
+	@Override
+	public Vector newInstace(String coordinates) {
+		if(coordinates == null) {
+			throw new IllegalArgumentException("so... this is null and it can't be one");
+		}
+		double x = 0.0, y =0.0;
+		String token = null;
+	
+		StringTokenizer strTok = new StringTokenizer(coordinates,",");
+		
+		//To get X
+		if(!strTok.hasMoreTokens()) {
+			throw new IllegalArgumentException("not enough tokens");
+		}
+		else {
+			token = strTok.nextToken();
+			x = Double.parseDouble(token);
+		}
+		
+		if(!strTok.hasMoreTokens()) {
+			throw new IllegalArgumentException("not enough tokens");
+		}
+		else {
+			token = strTok.nextToken();
+			y = Double.parseDouble(token);
+		}
+		
+		return new vector2D(x,y);
 	}
 
 
